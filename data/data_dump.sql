@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `access`
+--
+
+DROP TABLE IF EXISTS `access`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `access` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `eventid` int(11) DEFAULT NULL,
+  `userid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `access`
+--
+
+LOCK TABLES `access` WRITE;
+/*!40000 ALTER TABLE `access` DISABLE KEYS */;
+INSERT INTO `access` VALUES (1,3,11);
+/*!40000 ALTER TABLE `access` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `event`
 --
 
@@ -33,7 +58,7 @@ CREATE TABLE `event` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   CONSTRAINT `event_to_user` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +67,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
+INSERT INTO `event` VALUES (1,'sfasdfd',NULL,NULL,'2018-08-02 09:00:15','2018-08-02 09:00:15',10),(2,' Еще одна встреча;','2016-02-20 15:00:00','2017-02-20 15:00:00',NULL,NULL,10),(3,'Встреча номер три.','2018-05-17 21:00:00','2019-05-17 21:00:00','2018-08-02 12:32:37','2018-08-02 12:32:37',10),(5,'Встреча номер четыре.','2012-04-17 20:00:00','2013-04-17 20:00:00','2018-08-02 13:12:15','2018-08-02 13:12:15',11);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +84,7 @@ CREATE TABLE `users` (
   `passwordhash` varchar(255) DEFAULT NULL,
   `accesstoken` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +93,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (10,'igor','$2y$13$Wy7PCWEGzakA9XvXNoI0hO2FZgjDZjE.6j9omWWDwR.H.ZBg1HWKy','2fq6DTbFgZUivl_Sf06zPldepIyz0J4a');
+INSERT INTO `users` VALUES (10,'igor','$2y$13$Wy7PCWEGzakA9XvXNoI0hO2FZgjDZjE.6j9omWWDwR.H.ZBg1HWKy','2fq6DTbFgZUivl_Sf06zPldepIyz0J4a'),(11,'sergey','$2y$13$.vuF/WL8aZsxG5AHYdD2zOnjxzhet0QXa.HT0NpSx0ECyf3f4bHkm','F5diJRlRES2KC9YrJmepNcTgNa5VIkt1');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -80,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-30 20:28:42
+-- Dump completed on 2018-08-03 15:45:43
