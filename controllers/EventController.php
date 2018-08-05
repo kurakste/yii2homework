@@ -17,6 +17,9 @@ class EventController extends Controller
     /**
      * {@inheritdoc}
      */
+    /* public $layout = 'adminlte'; */
+    public $layout = 'main';
+    
     public function behaviors()
     {
         return [
@@ -26,6 +29,11 @@ class EventController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => AccessControl::class,
+            'only'
+            'rules' => [
+                
+            ]
         ];
     }
 
@@ -70,9 +78,9 @@ class EventController extends Controller
             $incomingData = Yii::$app->request->post();
             $incomingData['Event']['uid'] = (Yii::$app->user)->id;
 
-        if ($model->load($incomingData) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+            if ($model->load($incomingData) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [

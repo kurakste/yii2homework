@@ -14,6 +14,9 @@ use yii\filters\VerbFilter;
  */
 class CalendarController extends Controller
 {
+    /* public $layout = 'adminlte'; */
+    public $layout = 'main';
+    
     public function actionIndex()
     {
         if ($this->doLoginIfaGuest()) {

@@ -18,6 +18,9 @@ class AccessController extends Controller
     /**
      * {@inheritdoc}
      */
+    /* public $layout = 'adminlte'; */
+    public $layout = 'main';
+    
     public function behaviors()
     {
         return [

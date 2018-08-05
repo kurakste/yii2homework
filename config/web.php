@@ -12,6 +12,15 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        /* 'view' => [ */
+        /*     'theme' => [ */
+        /*         'pathMap' => [ */
+        /*             '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app' */
+        /*         ], */
+            
+        /*     ], */
+        
+        /* ], */
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'q2jonJHcb80LjSJVXCS6s2A2k2896hMH',
