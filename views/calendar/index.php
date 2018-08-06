@@ -2,42 +2,17 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\objects\CalendarHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UsersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Календарь на декабрь)))';
 ?>
 <div class="user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <h4><?= Html::encode($this->title) ?></h4>
 
-    <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-            [
-                'value' => 'start_at',
-                'format' => 'datetime'
-            ],
-            [
-                'value' => 'end_at',
-                'format' => 'datetime'
-            ],
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+<?php echo CalendarHelper::rendercalendar('12', '2018', $eventsByDay); ?>
 </div>
 

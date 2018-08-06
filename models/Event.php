@@ -34,7 +34,6 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             [['start_at', 'end_at', 'created_at', 'updater_at'], 'safe'],
-            [['uid'], 'required'],
             [['uid'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['uid'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['uid' => 'id']],
@@ -53,7 +52,7 @@ class Event extends \yii\db\ActiveRecord
             'end_at' => 'Время окончания.',
             'created_at' => 'Время создания.',
             'updater_at' => 'Время последнего изменения.',
-            'uid' => ' Идентификатор пользователя',
+            'uid' => 'Идентификатор пользователя',
         ];
     }
 
@@ -63,6 +62,11 @@ class Event extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'uid']);
+    }
+    
+    public function getUsers()
+    {
+        return $this->hasMany(Access::className(), ['eventid' => 'id']);
     }
 
     /**

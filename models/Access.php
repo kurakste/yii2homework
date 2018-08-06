@@ -63,4 +63,14 @@ class Access extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Event::class, ['id'=> 'eventid']);
     }
+
+    public static function SaveAccess(Event $event, int $userId): void
+    {
+        $access = new self(); 
+        $access->setAttributes([
+            'eventid' => $event->id,
+            'userid' => $userId,
+        ]);
+        $access->save();
+    }
 }

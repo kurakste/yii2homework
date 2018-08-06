@@ -17,6 +17,13 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'start_at')->textInput() ?>
 
     <?= $form->field($model, 'end_at')->textInput() ?>
+    
+    <?= $form->field($model, 'users')
+            ->checkboxList($viewModel
+            ->getUserOptions())
+            ->label('Пользователи.') 
+            ->hint('Пользователи, у которых будет доступ к событию.'); ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -68,6 +68,14 @@ class EventSearch extends Event
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->leftJoin(['access' => 'access'], 'event.id = access.eventid');
+        $query->andWhere(
+            [
+                'or',
+                ['uid' => \Yii::$app->user->getId()],
+                ['access.userid' => \Yii::$app->user->getId()],    
+            ]
+        );
 
         return $dataProvider;
     }

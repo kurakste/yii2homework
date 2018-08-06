@@ -5,9 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\Event;
 use app\models\CalendarSearch;
+use app\objects\CalendarHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 
 /**
  * EventController implements the CRUD actions for Event model.
@@ -16,23 +18,13 @@ class CalendarController extends Controller
 {
     /* public $layout = 'adminlte'; */
     public $layout = 'main';
+    public $events = [];
     
     public function actionIndex()
     {
-        if ($this->doLoginIfaGuest()) {
-            $params = Yii::$app->request->queryParams; 
-            $params['CalendarSearch']['uid'] = Yii::$app->user->identity->id;
-
-            $searchModel = new CalendarSearch();
-            $dataProvider = $searchModel->search($params);
-
-            return $this->render('index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]);
-        
-        }
-
+        $eventsByDay = CalendarHelper::getEvents('12', '2018');
+            return $this->render('index', 
+                ['eventsByDay' => $eventsByDay]);
     }
 
     private function doLoginIfaGuest()

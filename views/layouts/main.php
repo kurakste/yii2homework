@@ -38,9 +38,10 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'MyCalendars', 'url' => ['/calendar']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Event', 'url' => ['/event']],
+            ['label' => 'Users', 'url' => ['/user']],
+            ['label' => 'Access', 'url' => ['/access']],
+            ['label' => 'Calendar', 'url' => ['/calendar']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -63,7 +64,6 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
 
-        <p> Здесь пользователь может смотреть и создавать записи в своих календарях. </p>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
