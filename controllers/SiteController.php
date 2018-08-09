@@ -67,7 +67,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $a = Event::find()->all();
+        $cache = \Yii::$app->getCache();
         return $this->render('index');
     }
 

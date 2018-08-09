@@ -14,6 +14,7 @@ use yii\filters\AccessControl;
 use app\objects\ViewModels\EventCreateView;
 use app\objects\ViewModels\EventView;
 use yii\web\ForbiddenHttpException;
+use yii\filters\HttpCache;
 
 /**
  * EventController implements the CRUD actions for Event model.
@@ -46,6 +47,18 @@ class EventController extends Controller
                 ],
             
             ],
+            'cache' => [
+                            'class' => HttpCache::class,
+                            'only' => ['view'],
+                            'lastModified' => function () {
+                                $id = (int) \Yii::$app->getRequest()->getQueryParam('id');
+                                $model = $this->findModel($id);
+                                return \strtotime($model->created_at);
+                            },
+            //				'etagSeed' => function ($action, $params) {
+            //
+            //				}
+			]
         ];
     }
 
