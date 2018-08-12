@@ -19,7 +19,7 @@ class SiteController extends Controller
      * {@inheritdoc}
      */
     /* public $layout = 'adminlte'; */
-    public $layout = 'main';
+    public $layout = 'adminLte';
 
     public function behaviors()
     {
@@ -78,6 +78,8 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = 'main-login-lte';
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

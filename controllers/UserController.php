@@ -19,7 +19,7 @@ class UserController extends Controller
      * {@inheritdoc}
      */
     /* public $layout = 'adminlte'; */
-    public $layout = 'main';
+    public $layout = 'adminLte';
     
     public function behaviors()
     {

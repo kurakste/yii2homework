@@ -24,8 +24,7 @@ class EventController extends Controller
     /**
      * {@inheritdoc}
      */
-    /* public $layout = 'adminlte'; */
-    public $layout = 'main';
+    public $layout = 'adminlte';
     
     public function behaviors()
     {
@@ -47,18 +46,6 @@ class EventController extends Controller
                 ],
             
             ],
-            'cache' => [
-                            'class' => HttpCache::class,
-                            'only' => ['view'],
-                            'lastModified' => function () {
-                                $id = (int) \Yii::$app->getRequest()->getQueryParam('id');
-                                $model = $this->findModel($id);
-                                return \strtotime($model->created_at);
-                            },
-            //				'etagSeed' => function ($action, $params) {
-            //
-            //				}
-			]
         ];
     }
 

@@ -18,7 +18,7 @@ class AdminLteAsset extends AssetBundle
     public $css = [
         '/css/site.css',
         '/bower_components/bootstrap/dist/css/bootstrap.min.css',
-        '/bower_components/font-awesome/css/font-awesome.min.css',
+        /* '/bower_components/font-awesome/css/font-awesome.min.css', */
         '/bower_components/Ionicons/css/ionicons.min.css',
         '/dist/css/AdminLTE.min.css',
         '/dist/css/skins/_all-skins.min.css',
@@ -51,5 +51,6 @@ class AdminLteAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'app\assets\FontAwesomeAsset',
     ];
 }
